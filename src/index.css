@@ -2,23 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Layout: dark heritage bands (midnight/plum) alternate with warm ivory product bands.
-   Palette from the boutique's poster: midnight #16061B, plum #5A254E, gold #DBA01C,
-   bronze #965C22, cocoa #562A23, ivory #F7F3EA. Single committed look, so colours are explicit. */
+/* Palette from the boutique's poster: midnight #16061B, plum #5A254E, gold #DBA01C,
+   with ivory product bands and peacock teal from the logo as the one secondary colour.
+   Single committed look, so colours are explicit. */
 :root {
   color-scheme: dark;
   --midnight: #16061b;
   --gold: #dba01c;
+  --silk: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
   html {
     background: var(--midnight);
     -webkit-tap-highlight-color: transparent;
+    scrollbar-color: #7a3a6a #16061b;
   }
   body {
     @apply bg-midnight font-sans text-white antialiased;
     overflow-x: hidden;
+    caret-color: var(--gold);
   }
   body::before {
     content: '';
@@ -28,65 +31,93 @@
     z-index: 95;
     background: var(--midnight);
   }
+  ::selection {
+    background: #f0c75e;
+    color: #16061b;
+  }
   h1, h2, h3 {
     text-wrap: balance;
   }
   .font-display {
     font-variant-numeric: lining-nums;
+    letter-spacing: -0.01em;
   }
   :focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 3px;
-    border-radius: 6px;
   }
   input[type='search']::-webkit-search-cancel-button {
     display: none;
   }
+  a {
+    text-underline-offset: 4px;
+  }
 }
 
 @layer components {
-  .arch {
-    border-radius: 50% 50% 20px 20px / 34% 34% 20px 20px;
+  .shell {
+    @apply mx-auto w-full max-w-[1560px] px-[max(16px,env(safe-area-inset-left,0px))] md:px-8 xl:px-12;
   }
-  .gold-text {
-    background: linear-gradient(100deg, #f6e2a8 0%, #dba01c 38%, #f0c75e 60%, #965c22 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+
+  /* Arched doorway top, used on the hero and feature photographs */
+  .arch-top {
+    border-radius: 50% 50% 0 0 / 40% 40% 0 0;
   }
-  .btn-gold {
+
+  /* Inset gold hairline over a photograph */
+  .frame {
     position: relative;
+  }
+  .frame::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(240, 199, 94, 0.55);
+    pointer-events: none;
+    transition: inset 0.6s var(--silk), border-color 0.6s var(--silk);
+  }
+  .group:hover .frame::after,
+  .frame:hover::after {
+    inset: 18px;
+    border-color: rgba(240, 199, 94, 0.9);
+  }
+
+  .btn {
+    @apply relative inline-flex min-h-[50px] items-center justify-center gap-2.5 px-7 text-[0.74rem] font-bold uppercase tracking-[0.2em] transition duration-300 active:scale-[0.98];
     isolation: isolate;
     overflow: hidden;
-    color: #16061b;
-    background: linear-gradient(135deg, #f0c75e 0%, #dba01c 45%, #b9801a 100%);
-    box-shadow: 0 10px 30px -12px rgba(219, 160, 28, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.45);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .btn-gold::after {
+  /* light sweep across buttons on hover */
+  .btn::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+    background: linear-gradient(110deg, transparent 30%, rgba(246, 226, 168, 0.5) 50%, transparent 70%);
     transform: translateX(-120%);
-    transition: transform 0.7s ease;
   }
-  .btn-gold:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px -12px rgba(219, 160, 28, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  }
-  .btn-gold:hover::after {
+  .btn:hover::after {
     transform: translateX(120%);
+    transition: transform 0.8s var(--silk);
   }
-  .btn-gold:active {
-    transform: translateY(0) scale(0.98);
+  .btn-gold {
+    @apply bg-gold text-midnight hover:bg-gold-light;
+    box-shadow: 0 14px 30px -14px rgba(219, 160, 28, 0.75);
   }
-  /* faint woven butta pattern for ivory bands */
-  .paisley-bg {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23965C22' stroke-opacity='.13' stroke-width='1'%3E%3Cpath d='M36 22c5 4 6 11 1 16-4 4-11 3-13-2-2-6 4-10 8-8 3 2 2 6-1 6'/%3E%3Ccircle cx='0' cy='0' r='3'/%3E%3Ccircle cx='72' cy='0' r='3'/%3E%3Ccircle cx='0' cy='72' r='3'/%3E%3Ccircle cx='72' cy='72' r='3'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 72px 72px;
+  .btn-line {
+    @apply border border-gold/70 text-gold-light hover:border-gold hover:bg-gold/10 hover:text-white;
   }
+  .btn-ink {
+    @apply border border-midnight bg-midnight text-gold-light hover:bg-plum hover:border-plum;
+  }
+  .btn-outline-ink {
+    @apply border border-bronze/60 text-midnight hover:border-midnight hover:bg-midnight hover:text-gold-light;
+  }
+
+  .label {
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.24em];
+  }
+
   .no-scrollbar {
     scrollbar-width: none;
   }
@@ -95,11 +126,6 @@
   }
   .marquee:hover {
     animation-play-state: paused;
-  }
-  @media (hover: hover) {
-    .hero-glow .cursor-glow {
-      background: radial-gradient(420px circle at var(--mx, -999px) var(--my, -999px), rgba(219, 160, 28, 0.13), transparent 60%);
-    }
   }
 }
 

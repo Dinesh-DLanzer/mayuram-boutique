@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T17:44:18+00:00",
+  "title": "Design System: Mayuram Boutique",
+  "extensions": {
+    "colorMeta": {
+      "midnight": {
+        "role": "neutral",
+        "displayName": "Midnight",
+        "canonical": "oklch(16.2% 0.049 318)",
+        "tonalRamp": [
+          "#130418",
+          "#2E1C33",
+          "#4B3851",
+          "#695570",
+          "#8A7490",
+          "#AB95B3",
+          "#D2BBD9",
+          "#F9E8FE"
+        ]
+      },
+      "midnight-900": {
+        "role": "neutral",
+        "displayName": "Midnight Depths 900"
+      },
+      "midnight-800": {
+        "role": "neutral",
+        "displayName": "Midnight Depths 800"
+      },
+      "midnight-700": {
+        "role": "neutral",
+        "displayName": "Midnight Depths 700"
+      },
+      "plum": {
+        "role": "tertiary",
+        "displayName": "Temple Plum",
+        "canonical": "oklch(35.6% 0.096 337)",
+        "tonalRamp": [
+          "#1A0114",
+          "#3E0A34",
+          "#5E2952",
+          "#7F4771",
+          "#A26692",
+          "#C587B4",
+          "#EDACDB",
+          "#FFE6F7"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Zari Gold",
+        "canonical": "oklch(74.3% 0.147 81)",
+        "tonalRamp": [
+          "#120A00",
+          "#302103",
+          "#543B01",
+          "#7A5705",
+          "#A07517",
+          "#C99421",
+          "#F5B941",
+          "#FFECCD"
+        ]
+      },
+      "gold-light": {
+        "role": "primary",
+        "displayName": "Light Zari"
+      },
+      "gold-pale": {
+        "role": "primary",
+        "displayName": "Pale Zari"
+      },
+      "bronze": {
+        "role": "tertiary",
+        "displayName": "Bronze",
+        "canonical": "oklch(49.7% 0.101 63)",
+        "tonalRamp": [
+          "#150800",
+          "#371D02",
+          "#5C3507",
+          "#854F11",
+          "#A76F37",
+          "#CB9059",
+          "#F3B67E",
+          "#FEEBD9"
+        ]
+      },
+      "peacock": {
+        "role": "secondary",
+        "displayName": "Peacock Teal",
+        "canonical": "oklch(44.2% 0.071 206)",
+        "tonalRamp": [
+          "#000E10",
+          "#012A2E",
+          "#07494F",
+          "#1F6971",
+          "#438A92",
+          "#66ACB4",
+          "#8CD2DA",
+          "#CBF8FE"
+        ]
+      },
+      "peacock-deep": {
+        "role": "secondary",
+        "displayName": "Peacock Shadow"
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Ivory",
+        "canonical": "oklch(96.5% 0.013 87)",
+        "tonalRamp": [
+          "#0D0B06",
+          "#27241D",
+          "#433F38",
+          "#615D56",
+          "#807D75",
+          "#A29E96",
+          "#C8C4BB",
+          "#F2EEE5"
+        ]
+      },
+      "ivory-deep": {
+        "role": "neutral",
+        "displayName": "Ivory Deep"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Two-line hero headline; second line italic Light Zari."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every section heading, followed by a 96px stitch."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step, service, product and tile names; italic for testimonial quotes."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Subtitles and story copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Tracked uppercase captions and slide tabs; never above a headline."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "All text buttons and desktop nav items."
+      }
+    },
+    "shadows": [
+      {
+        "name": "lift",
+        "value": "0 30px 60px -30px rgba(22,6,27,.75)",
+        "purpose": "Arched portraits, swing tag, overlapping inset photographs."
+      },
+      {
+        "name": "card",
+        "value": "0 18px 50px -24px rgba(22,6,27,.55)",
+        "purpose": "Search suggestions and overlay panels."
+      },
+      {
+        "name": "gold-glow",
+        "value": "0 14px 30px -14px rgba(219,160,28,.75)",
+        "purpose": "Gold button only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "silk",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Default ease for reveals, stitches, frames and image zooms."
+      },
+      {
+        "name": "reveal",
+        "value": "0.8s silk, 26px rise, once",
+        "purpose": "Single fade-up reveal for blocks."
+      },
+      {
+        "name": "stitch-sew",
+        "value": "1.2s silk clip-path inset",
+        "purpose": "StitchLine sewing in on view."
+      },
+      {
+        "name": "arch-sew",
+        "value": "2.4s cubic-bezier(0.65, 0, 0.35, 1) pathLength",
+        "purpose": "Hero arch stitch, re-sewn per slide."
+      },
+      {
+        "name": "hero-slide",
+        "value": "7s per slide; 1.2s crossfade with 1.08 to 1 zoom",
+        "purpose": "Hero carousel."
+      },
+      {
+        "name": "headline-rise",
+        "value": "1s silk from 105% inside overflow mask, 0.12s line stagger",
+        "purpose": "Hero headline lines."
+      },
+      {
+        "name": "sway",
+        "value": "5s ease-in-out infinite, -3deg to 2deg",
+        "purpose": "Swing tag."
+      },
+      {
+        "name": "marquee",
+        "value": "48s linear infinite",
+        "purpose": "Announcement bar."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Gold Button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Primary action on any ground; one per group.",
+      "html": "<button class=\"ds-btn ds-btn-gold\">Explore sarees</button>",
+      "css": ".ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;font-family:Manrope,system-ui,sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;border:1px solid transparent;border-radius:0;cursor:pointer;overflow:hidden;isolation:isolate;transition:background-color .3s,color .3s,border-color .3s,transform .3s;}.ds-btn::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);}.ds-btn:hover::after{transform:translateX(120%);transition:transform .8s cubic-bezier(0.22,1,0.36,1);}.ds-btn:active{transform:scale(.98);}.ds-btn:focus-visible{outline:2px solid #DBA01C;outline-offset:3px;}.ds-btn-gold{background:#DBA01C;color:#16061B;box-shadow:0 14px 30px -14px rgba(219,160,28,.75);}.ds-btn-gold:hover{background:#F0C75E;}"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Secondary action on dark grounds and over photographs.",
+      "html": "<div style=\"background:#16061B;padding:24px\"><button class=\"ds-btn ds-btn-line\">Custom stitching</button></div>",
+      "css": ".ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;font-family:Manrope,system-ui,sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;border:1px solid transparent;border-radius:0;cursor:pointer;overflow:hidden;isolation:isolate;transition:background-color .3s,color .3s,border-color .3s,transform .3s;}.ds-btn::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);}.ds-btn:hover::after{transform:translateX(120%);transition:transform .8s cubic-bezier(0.22,1,0.36,1);}.ds-btn:active{transform:scale(.98);}.ds-btn:focus-visible{outline:2px solid #DBA01C;outline-offset:3px;}.ds-btn-line{background:transparent;color:#F0C75E;border-color:rgba(219,160,28,.7);}.ds-btn-line:hover{border-color:#DBA01C;background:rgba(219,160,28,.1);color:#fff;}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Primary action on ivory grounds.",
+      "html": "<div style=\"background:#F7F3EA;padding:24px\"><button class=\"ds-btn ds-btn-ink\">Ask on WhatsApp</button></div>",
+      "css": ".ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;font-family:Manrope,system-ui,sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;border:1px solid transparent;border-radius:0;cursor:pointer;overflow:hidden;isolation:isolate;transition:background-color .3s,color .3s,border-color .3s,transform .3s;}.ds-btn::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);}.ds-btn:hover::after{transform:translateX(120%);transition:transform .8s cubic-bezier(0.22,1,0.36,1);}.ds-btn:active{transform:scale(.98);}.ds-btn:focus-visible{outline:2px solid #DBA01C;outline-offset:3px;}.ds-btn-ink{background:#16061B;color:#F0C75E;border-color:#16061B;}.ds-btn-ink:hover{background:#5A254E;border-color:#5A254E;}"
+    },
+    {
+      "name": "Outline Ink Button",
+      "kind": "button",
+      "refersTo": "button-outline-ink",
+      "description": "Secondary action on ivory grounds.",
+      "html": "<div style=\"background:#F7F3EA;padding:24px\"><button class=\"ds-btn ds-btn-oink\">View lookbook</button></div>",
+      "css": ".ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;font-family:Manrope,system-ui,sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;border:1px solid transparent;border-radius:0;cursor:pointer;overflow:hidden;isolation:isolate;transition:background-color .3s,color .3s,border-color .3s,transform .3s;}.ds-btn::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);}.ds-btn:hover::after{transform:translateX(120%);transition:transform .8s cubic-bezier(0.22,1,0.36,1);}.ds-btn:active{transform:scale(.98);}.ds-btn:focus-visible{outline:2px solid #DBA01C;outline-offset:3px;}.ds-btn-oink{background:transparent;color:#16061B;border-color:rgba(138,84,24,.6);}.ds-btn-oink:hover{background:#16061B;border-color:#16061B;color:#F0C75E;}"
+    },
+    {
+      "name": "Line Input",
+      "kind": "input",
+      "refersTo": "input-line",
+      "description": "Square field on dark grounds; border turns gold on focus.",
+      "html": "<div style=\"background:#16061B;padding:24px\"><div class=\"ds-field\"><input class=\"ds-input\" type=\"email\" placeholder=\"Your email address\"><button class=\"ds-field-btn\">Subscribe</button></div></div>",
+      "css": ".ds-field{display:flex;border:1px solid rgba(255,255,255,.2);max-width:360px;transition:border-color .3s;}.ds-field:focus-within{border-color:#DBA01C;}.ds-input{flex:1;min-width:0;background:transparent;border:0;outline:none;padding:12px 16px;font:400 0.875rem Manrope,system-ui,sans-serif;color:#fff;caret-color:#DBA01C;}.ds-input::placeholder{color:rgba(255,255,255,.4);}.ds-field-btn{background:#DBA01C;color:#16061B;border:0;padding:0 16px;font:700 0.7rem Manrope,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;cursor:pointer;}.ds-field-btn:hover{background:#F0C75E;}"
+    },
+    {
+      "name": "Icon Control",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Circular icon-only control (carousel arrows); the only round control shape.",
+      "html": "<div style=\"background:#16061B;padding:24px\"><button class=\"ds-icon-btn\" aria-label=\"Next\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m9 18 6-6-6-6\"/></svg></button></div>",
+      "css": ".ds-icon-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:9999px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer;transition:border-color .3s,color .3s;}.ds-icon-btn:hover{border-color:#DBA01C;color:#DBA01C;}.ds-icon-btn:focus-visible{outline:2px solid #DBA01C;outline-offset:3px;}"
+    },
+    {
+      "name": "Section Heading with Stitch",
+      "kind": "custom",
+      "description": "Brygada headline with one italic accent, closed by a 96px gold running stitch that sews itself in.",
+      "html": "<div style=\"background:#16061B;padding:32px\"><div class=\"ds-head\"><h2>Crafted especially <em>for you.</em></h2><svg class=\"ds-stitch\" height=\"2\"><line x1=\"0\" y1=\"1\" x2=\"100%\" y2=\"1\" stroke=\"#DBA01C\" stroke-width=\"1.5\" stroke-dasharray=\"7 5\" stroke-linecap=\"round\"/></svg><p>From an everyday blouse stitched to fit, to bridal handwork planned across fittings.</p></div></div>",
+      "css": ".ds-head{display:flex;flex-direction:column;gap:16px;}.ds-head h2{margin:0;max-width:18ch;font-family:'Brygada 1918',Didot,Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-0.01em;color:#fff;}.ds-head em{color:#F0C75E;}.ds-stitch{display:block;width:96px;overflow:visible;animation:ds-sew 1.2s cubic-bezier(0.22,1,0.36,1) both;}.ds-head p{margin:0;max-width:36rem;font:400 1.02rem/1.625 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.7);}@keyframes ds-sew{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}"
+    },
+    {
+      "name": "Framed Tile",
+      "kind": "card",
+      "description": "Square linked photograph with bottom scrim, Brygada caption and an inset gold hairline that eases outward on hover.",
+      "html": "<button class=\"ds-tile\"><span class=\"ds-tile-img\"></span><span class=\"ds-tile-cap\">Silk Sarees</span></button>",
+      "css": ".ds-tile{position:relative;display:block;width:280px;aspect-ratio:3/4;border:0;padding:0;border-radius:0;overflow:hidden;cursor:pointer;text-align:left;background:#2A0D30;}.ds-tile-img{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 30%,#7A3A6A,#2A0D30 70%);transition:transform 1.4s cubic-bezier(0.22,1,0.36,1);}.ds-tile:hover .ds-tile-img{transform:scale(1.06);}.ds-tile::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,6,27,.85),rgba(22,6,27,.2) 50%,transparent);}.ds-tile::after{content:'';position:absolute;inset:12px;border:1px solid rgba(240,199,94,.55);pointer-events:none;transition:inset .6s cubic-bezier(0.22,1,0.36,1),border-color .6s cubic-bezier(0.22,1,0.36,1);}.ds-tile:hover::after{inset:18px;border-color:rgba(240,199,94,.9);}.ds-tile-cap{position:absolute;left:20px;bottom:20px;font-family:'Brygada 1918',Didot,Georgia,serif;font-size:1.6rem;line-height:1.05;color:#fff;}.ds-tile:focus-visible{outline:2px solid #DBA01C;outline-offset:3px;}"
+    },
+    {
+      "name": "Testimonial Card",
+      "kind": "card",
+      "refersTo": "testimonial-card",
+      "description": "Square gold-hairline card on the peacock band with an italic Brygada quote.",
+      "html": "<div style=\"background:radial-gradient(ellipse 80% 90% at 50% 0%,#167580,#0E5E66 38%,#08363C);padding:32px\"><figure class=\"ds-quote\"><span class=\"ds-tag\">Sample review</span><blockquote>&ldquo;The blouse fit perfectly the first time.&rdquo;</blockquote><figcaption>Sample Customer, Chennai</figcaption></figure></div>",
+      "css": ".ds-quote{margin:0;display:flex;flex-direction:column;gap:24px;max-width:360px;padding:36px;border:1px solid rgba(219,160,28,.3);background:rgba(7,46,51,.4);}.ds-tag{align-self:flex-end;border:1px solid rgba(219,160,28,.3);padding:2px 8px;font:600 .6rem Manrope,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:rgba(246,226,168,.8);}.ds-quote blockquote{margin:0;font-family:'Brygada 1918',Didot,Georgia,serif;font-style:italic;font-size:1.3rem;line-height:1.375;color:rgba(255,255,255,.9);}.ds-quote figcaption{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font:600 .875rem Manrope,system-ui,sans-serif;color:#fff;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Atelier Doorway",
+    "overview": "**Creative North Star: \"The Atelier Doorway\"**\n\nThe site is a Chennai saree-and-blouse atelier seen through its own arched doorway: deep midnight and plum poster bands, warm ivory rooms where the cloth is laid out, and a single gold running stitch that ties every section together. Photography carries the product; the system's job is to frame it. Real silk on real women sits in square-cornered frames with a gold hairline inset, while the hero and feature portraits rise into an arch.\n\nDensity is generous and editorial. Sections alternate between dark grounds (midnight, plum gradients, one peacock band) and the ivory ground, each opening on a centred or left-aligned Brygada headline with a short dashed gold or bronze stitch beneath it. Motion is slow and tailored: a silk ease, crossfades with a gentle zoom, headlines rising from a mask, single fade-ups, and stitches that sew themselves in.\n\nThe world refuses procedural product art, pill-shaped SaaS cards and generic gradient blobs. Its gradients are lighting on cloth (a plum glow inside midnight), never decorative blobs.",
+    "keyCharacteristics": [
+      "Poster-band rhythm: midnight/plum dark bands alternating with ivory product and craft bands; peacock teal appears once.",
+      "The gold running stitch (dashed 7/5 or 8/6, 1.5px) as the signature line and motion.",
+      "Arch-topped portrait frames for hero and feature imagery; square frames with an inset gold hairline for linked tiles.",
+      "Brygada 1918 roman headlines with one italic accent phrase; Manrope for everything readable.",
+      "Square text buttons; circles only for icon-only controls and small thumbnails."
+    ],
+    "rules": [
+      {
+        "name": "The Thread Rule",
+        "body": "Gold is thread, not cloth: it draws lines, fills buttons and marks states, but never floods a section background.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Peacock Rule",
+        "body": "Peacock teal is the only secondary and owns one band. A second teal surface dilutes it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ground Pairing Rule",
+        "body": "Gold and white belong on dark grounds; bronze and midnight belong on ivory. A gold stitch on ivory or a bronze stitch on midnight is off-system.",
+        "section": "colors"
+      },
+      {
+        "name": "The Italic Accent Rule",
+        "body": "A headline may carry one italic phrase, coloured Light Zari on dark grounds and Temple Plum on ivory. Never italicise a whole heading, and never colour roman text gold.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Eyebrow Rule",
+        "body": "Tracked uppercase is for controls and small captions only. Nothing tracked sits above a section headline; the stitch goes below it instead.",
+        "section": "typography"
+      },
+      {
+        "name": "The Cloth-Lit Rule",
+        "body": "Dark bands are lit by a plum glow inside midnight; a flat midnight band is acceptable, a decorative multi-colour blob is not.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do close every section headline with a stitch: gold (#DBA01C) on dark grounds, bronze (#8A5418) on ivory.",
+      "Do frame linked photographs with the inset 1px Light Zari hairline 12px inside the edge, easing to 18px on hover.",
+      "Do use the arch (50% 50% 0 0 / 40% 40% 0 0) for portrait feature imagery, with an offset gold stitch or hairline arch outside it.",
+      "Do keep text buttons square, 50px tall, uppercase at 0.74rem with 0.2em tracking.",
+      "Do move on the silk ease (cubic-bezier(0.22, 1, 0.36, 1)) with long durations: 0.8s reveals, 1.2s stitches, 1.2 to 1.6s image zooms.",
+      "Do alternate dark and ivory bands, and keep peacock teal to a single band.",
+      "Do keep demo content visibly labelled (sample-review tags, demo catalogue notes) in the system's own caption styles."
+    ],
+    "donts": [
+      "Don't put tracked uppercase eyebrows or kickers above headlines.",
+      "Don't round text buttons, cards or photographs; circles are for icon-only controls, avatars and small thumbnails.",
+      "Don't use pill-shaped SaaS cards, procedural product art or generic gradient blobs.",
+      "Don't flood a section with gold, or introduce a second secondary colour beside peacock teal.",
+      "Don't use hard offset shadows; elevation is soft, long and midnight-tinted.",
+      "Don't set display type in a system or sans face; headings are Brygada 1918."
+    ]
+  }
+}

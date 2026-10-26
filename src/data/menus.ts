@@ -84,8 +84,8 @@ export const megaMenus: MegaMenu[] = [
     banner: {
       image: 'mega-sarees',
       eyebrow: 'Silk edit',
-      title: 'Timeless Silk Collection',
-      text: 'Celebrate Every Occasion in Elegance.',
+      title: 'The silk edit',
+      text: 'Kanchipuram, soft silk and zari borders, with a blouse stitched to match.',
       cta: 'Explore Collection',
       action: { filter: 'silk' },
     },
@@ -160,7 +160,7 @@ export const megaMenus: MegaMenu[] = [
     banner: {
       image: 'mega-stitching',
       eyebrow: 'Made to measure',
-      title: 'Your Design. Our Craftsmanship.',
+      title: 'Your saree, our needle.',
       text: 'Share a photo of your saree or a design you love, and we will plan the blouse with you.',
       cta: 'Enquire on WhatsApp',
       action: { whatsapp: "Hello Mayuram Boutique, I'd like to enquire about custom blouse stitching." },
@@ -175,14 +175,13 @@ export interface NavItem {
   section?: string
 }
 
+// The logo links home and Best Sellers lives in the Sarees menu, so the bar stays on one line.
 export const navItems: NavItem[] = [
-  { label: 'Home', section: 'top' },
   { label: 'Sarees', menu: 'sarees' },
-  { label: 'Boutique Products', menu: 'boutique' },
-  { label: 'Custom Stitching', menu: 'stitching' },
-  { label: 'Bridal Collection', filter: 'bridal' },
+  { label: 'Boutique', menu: 'boutique' },
+  { label: 'Stitching', menu: 'stitching' },
+  { label: 'Bridal', filter: 'bridal' },
   { label: 'New Arrivals', filter: 'new' },
-  { label: 'Best Sellers', filter: 'bestseller' },
   { label: 'Offers', section: 'offers' },
   { label: 'Contact', section: 'contact' },
 ]

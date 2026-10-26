@@ -1,85 +1,86 @@
 export const heroSlides = [
   {
     image: 'hero-sarees',
-    eyebrow: 'Premium Saree Collection',
-    title: 'Where Tradition Meets Timeless Elegance.',
-    accent: 'Elegance Woven into Every Thread.',
-    text: 'Discover exquisite sarees, designer blouses, and custom boutique creations made to celebrate your unique style.',
+    label: 'Sarees',
+    title: ['Every saree deserves', 'a blouse that fits.'],
+    tag: 'Peacock silk, temple border',
+    text: 'Silk and cotton sarees, designer blouses and custom boutique creations, chosen and finished in Thiruvanmiyur.',
     primary: { label: 'Explore Sarees', filter: 'silk' },
-    secondary: { label: 'Discover Boutique Collections', filter: 'blouses' },
-  },
-  {
-    image: 'hero-boutique',
-    eyebrow: 'Designer Boutique Collection',
-    title: 'Designed for You. Crafted with Love.',
-    accent: 'Aari work, maggam and made-to-measure blouses.',
-    text: 'Bring your saree, share your idea, and leave with a blouse that fits beautifully and is finished by hand.',
-    primary: { label: 'Discover Boutique Collections', filter: 'blouses' },
     secondary: { label: 'Custom Stitching', section: 'services' },
   },
   {
+    image: 'hero-boutique',
+    label: 'Blouses',
+    title: ['Your saree, your design.', 'Our needle.'],
+    tag: 'Hand-embroidered sleeve',
+    text: 'Bring your saree, share your idea, and leave with a blouse that fits beautifully and is finished by hand.',
+    primary: { label: 'Shop Blouses', filter: 'blouses' },
+    secondary: { label: 'How stitching works', section: 'services' },
+  },
+  {
     image: 'hero-bridal',
-    eyebrow: 'Bridal & Wedding Collection',
-    title: 'Make Every Celebration Unforgettable.',
-    accent: 'Rich silks and heirloom zari for your big day.',
+    label: 'Bridal',
+    title: ['Wedding silks,', 'finished by hand.'],
+    tag: 'Bridal silk, brocade blouse',
     text: 'Bridal silks, coordinated blouses and finishing touches, planned together for the wedding and every function around it.',
-    primary: { label: 'Explore Bridal Collection', filter: 'bridal' },
+    primary: { label: 'Explore Bridal', filter: 'bridal' },
     secondary: { label: 'Explore Sarees', filter: 'silk' },
   },
 ] as const
 
+/** The first five lead the collections mosaic; the rest appear as round shortcuts below it. */
 export const categories = [
-  { label: 'Silk Sarees', image: 'cat-silk', filter: 'silk' },
+  { label: 'Silk Sarees', image: 'cat-silk', filter: 'silk', text: 'Kanchipuram, soft silk and zari borders' },
+  { label: 'Designer Blouses', image: 'cat-blouses', filter: 'blouses', text: 'Statement backs and made-to-measure fits' },
+  { label: 'Aari Work', image: 'cat-aari', filter: 'aari', text: 'Beads, pearls and zardosi, worked by hand' },
+  { label: 'Bridal Sarees', image: 'cat-bridal', filter: 'bridal', text: 'Heirloom silks for the wedding day' },
+  { label: 'Custom Stitching', image: 'cat-stitching', section: 'services', text: 'Your saree, your design, our needle' },
   { label: 'Cotton Sarees', image: 'cat-cotton', filter: 'cotton' },
   { label: 'Designer Sarees', image: 'cat-designer', filter: 'designer' },
-  { label: 'Bridal Sarees', image: 'cat-bridal', filter: 'bridal' },
   { label: 'Festive Sarees', image: 'cat-festive', filter: 'festive' },
   { label: 'Chiffon Sarees', image: 'cat-chiffon', filter: 'chiffon' },
-  { label: 'Designer Blouses', image: 'cat-blouses', filter: 'blouses' },
-  { label: 'Aari Work', image: 'cat-aari', filter: 'aari' },
-  { label: 'Custom Stitching', image: 'cat-stitching', section: 'services' },
   { label: 'Boutique Collections', image: 'cat-boutique', filter: 'all' },
 ]
 
-export type ServiceIcon = 'scissors' | 'sparkles' | 'crown' | 'flower' | 'ruler' | 'shirt'
-
-export const services: { title: string; text: string; image: string; icon: ServiceIcon }[] = [
+export const services: { title: string; text: string; image: string }[] = [
   {
     title: 'Custom Blouse Stitching',
     text: 'Stitched to your measurements, with lining, padding and hooks chosen for your saree.',
     image: 'cat-stitching',
-    icon: 'scissors',
   },
   {
     title: 'Designer Blouses',
     text: 'Neck patterns, sleeve styles and back details designed around the occasion.',
-    image: 'p-designer-blouse',
-    icon: 'sparkles',
+    image: 'lb-blouse-back',
   },
   {
     title: 'Bridal Blouse Design',
     text: 'Heavier handwork, coordinated to the bridal saree and planned across fittings.',
-    image: 'p-bridal-blouse',
-    icon: 'crown',
+    image: 'cat-bridal',
   },
   {
     title: 'Aari Work',
     text: 'Hand aari and maggam embroidery with beads, pearls, stones and zardosi.',
     image: 'cat-aari',
-    icon: 'flower',
   },
   {
     title: 'Alterations & Fittings',
     text: 'Resizing, re-fitting and finishing for blouses you already own.',
-    image: 'ba-before',
-    icon: 'ruler',
+    image: 'svc-alterations',
   },
   {
     title: 'Custom Ethnic Creations',
     text: 'Half-saree sets, kids’ ethnic wear and coordinated family outfits on request.',
     image: 'cat-boutique',
-    icon: 'shirt',
   },
+]
+
+/** How a made-to-measure blouse comes together (from the FAQ answers below). */
+export const stitchSteps = [
+  { title: 'Share your saree', text: 'Bring it to the boutique, or send a photo on WhatsApp to talk through ideas first.' },
+  { title: 'Measurements', text: 'Taken at the boutique. A well-fitting blouse of yours works as a reference too.' },
+  { title: 'Design the details', text: 'Neckline, sleeve and how dense the aari or maggam work should be.' },
+  { title: 'Fitting & finish', text: 'Fit checked at every fitting, then lined, hooked and finished by hand.' },
 ]
 
 export const story = [
@@ -93,22 +94,19 @@ export const story = [
 export const promos = [
   {
     image: 'promo-bridal',
-    eyebrow: 'Bridal Elegance',
-    title: 'Made for Your Most Beautiful Moments.',
+    title: 'Bridal silks, planned with you.',
     cta: 'Explore Bridal Collection',
     filter: 'bridal',
   },
   {
     image: 'promo-blouse',
-    eyebrow: 'Designer Blouses',
-    title: 'Perfect Fit. Exceptional Detail.',
+    title: 'Blouses cut to your measure.',
     cta: 'Explore Designs',
     filter: 'blouses',
   },
   {
     image: 'promo-festive',
-    eyebrow: 'Festive Collections',
-    title: 'Celebrate Every Occasion in Style.',
+    title: 'Colour for Pongal and Deepavali.',
     cta: 'Shop Festive Edit',
     filter: 'festive',
   },
@@ -149,7 +147,7 @@ export const lookbook = [
   { image: 'lb-blouse-back', label: 'Designer blouse back' },
   { image: 'lb-aari', label: 'Aari work close-up' },
   { image: 'lb-festive', label: 'Festive looks' },
-  { image: 'lb-cotton', label: 'Elegant cotton saree' },
+  { image: 'lb-cotton', label: 'Everyday elegance' },
 ]
 
 export const faqs = [

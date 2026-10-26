@@ -16,7 +16,7 @@ npm run build     # static build in dist/ (relative paths, so any static host wo
 | Phone numbers, WhatsApp, address, social links | `src/config/site.ts` |
 | Products, prices, tags, filter tabs | `src/data/products.ts` |
 | Mega menu columns and links | `src/data/menus.ts` |
-| Hero slides, categories, services, testimonials, lookbook, FAQ | `src/data/content.ts` |
+| Hero slides, categories, services, stitching steps, testimonials, lookbook, FAQ | `src/data/content.ts` |
 | Colours and fonts | `tailwind.config.js`, `src/index.css` |
 
 Mega-menu links either filter the product grid (`filter: 'tag'`, or `'tag+tag'` to require both)
@@ -27,12 +27,15 @@ Social links are empty on purpose; icons appear in the footer and lookbook once 
 
 ## Images
 
-Everything in `public/images/` was rendered by `scripts/generate_images.py` (Python, numpy, Pillow),
-because no stock-photo source was reachable when this was built. Each image has a `-sm` (360 px)
-version, and wide ones also have a `-md` (960 px) version.
+Everything in `public/images/` is free stock photography from Unsplash (Unsplash License), chosen to
+stand in for the boutique's own photos. Sources and photographers are listed in
+`public/images/CREDITS.md`; `npm run images` re-downloads the set (`scripts/fetch_photos.sh`).
+Each image has a `-sm` (360 px) version, hero and banner images a `-md` version, and product images a
+`-detail` close-up shown on hover.
 
-To use real photography, save a file under the same name (and its `-sm` version) or point the
-`image` fields in `src/data/*.ts` at new names. Run `npm run images` to regenerate the renders.
+To use the boutique's own photography, save a file under the same name (and its `-sm` / `-detail`
+versions) or point the `image` fields in `src/data/*.ts` at new names. Real photos of Mayuram's own
+blouses and aari work will do far more than any stock image.
 
 ## Demo content
 

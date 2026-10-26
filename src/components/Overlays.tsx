@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { inr, waLink } from '../config/site'
 import { discount, products } from '../data/products'
 import { productById, useShop } from '../store/shop'
-import { Img, Ornament, WhatsAppIcon } from './ui'
+import { Img, StitchLine, WhatsAppIcon } from './ui'
 
 /** Traps focus inside `ref`, closes on Escape and restores focus on unmount. */
 function useDialog(open: boolean, onClose: () => void) {
@@ -80,7 +80,7 @@ export function QuickView() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.98 }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="relative grid max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-[28px] border border-gold/40 bg-ivory shadow-2xl md:grid-cols-2 md:overflow-hidden"
+            className="relative grid max-h-[92vh] w-full max-w-5xl overflow-y-auto border border-gold/40 bg-ivory text-midnight shadow-2xl md:grid-cols-2 md:overflow-hidden"
           >
             <button
               type="button"
@@ -93,20 +93,19 @@ export function QuickView() {
             <div className="relative aspect-[4/5] bg-ivory-deep md:aspect-auto">
               <Img name={p.image} alt={p.name} eager sizes="(max-width: 768px) 100vw, 520px" className="h-full w-full object-cover" />
               {discount(p) > 0 && (
-                <span className="absolute left-4 top-4 rounded-full bg-plum px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">{discount(p)}% off</span>
+                <span className="absolute left-0 top-4 bg-plum px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">{discount(p)}% off</span>
               )}
             </div>
             <div className="flex flex-col gap-4 p-6 sm:p-8 md:max-h-[92vh] md:overflow-y-auto">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-bronze">{p.badge ?? 'Mayuram Boutique'}</p>
-              <h2 id="qv-title" className="font-display text-[2.1rem] font-semibold leading-tight text-midnight">{p.name}</h2>
+                            <h2 id="qv-title" className="font-display text-[2.1rem] leading-tight text-midnight">{p.name}</h2>
               <div className="flex items-baseline gap-3">
-                <span className="text-2xl font-bold tabular-nums text-plum">{inr(p.price)}</span>
+                <span className="text-2xl font-semibold tabular-nums text-midnight">{inr(p.price)}</span>
                 {p.mrp && <span className="tabular-nums text-midnight/40 line-through">{inr(p.mrp)}</span>}
               </div>
               {p.priceNote && <p className="-mt-2 text-sm text-midnight/60">{p.priceNote}</p>}
-              <Ornament className="h-3 w-36 text-bronze" />
+              <StitchLine className="w-20" tone="bronze" />
               <p className="leading-relaxed text-midnight/75">{p.description}</p>
-              <dl className="grid gap-2 rounded-2xl border border-midnight/10 bg-white/70 p-4 text-sm">
+              <dl className="grid gap-2 border-y border-midnight/10 py-4 text-sm">
                 <div className="flex gap-3">
                   <dt className="w-16 shrink-0 font-semibold text-midnight">Fabric</dt>
                   <dd className="text-midnight/70">{p.fabric}</dd>
@@ -138,7 +137,7 @@ export function QuickView() {
                 </div>
               )}
               <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center rounded-full border border-midnight/15 bg-white">
+                <div className="flex items-center border border-midnight/20 bg-white">
                   <button type="button" onClick={() => setQty((q) => Math.max(1, q - 1))} className="grid h-11 w-11 place-items-center text-midnight" aria-label="Decrease quantity">
                     <Minus className="h-4 w-4" />
                   </button>
@@ -154,7 +153,7 @@ export function QuickView() {
                     addToCart(p, qty)
                     close()
                   }}
-                  className="btn-gold flex flex-1 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wider"
+                  className="btn btn-gold flex-1"
                 >
                   <ShoppingBag className="h-4 w-4" /> Add to bag
                 </button>
@@ -174,7 +173,7 @@ export function QuickView() {
                 href={waLink(`Hello Mayuram Boutique, I'm interested in the ${p.name} (${p.colors[color]?.name ?? ''}) I saw on your website. Is it available?`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-full border border-[#1f8f4e]/40 py-3 text-sm font-semibold text-[#17763f] transition hover:bg-[#1f8f4e] hover:text-white"
+                className="btn btn-outline-ink w-full"
               >
                 <WhatsAppIcon className="h-4 w-4" /> Ask about this piece on WhatsApp
               </a>
@@ -203,7 +202,7 @@ function Drawer({ open, onClose, title, children }: { open: boolean; onClose: ()
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-0 right-0 top-0 flex w-full max-w-md flex-col border-l border-gold/30 bg-ivory pb-[env(safe-area-inset-bottom,0px)] pt-[env(safe-area-inset-top,0px)]"
+            className="absolute bottom-0 right-0 top-0 flex w-full max-w-md flex-col border-l border-gold/30 bg-ivory text-midnight pb-[env(safe-area-inset-bottom,0px)] pt-[env(safe-area-inset-top,0px)]"
           >
             {children}
           </motion.aside>
@@ -257,13 +256,13 @@ export function BagDrawer() {
               {lines.map(({ p, qty }) => (
                 <li key={p.id} className="flex gap-4 py-4">
                   <button type="button" onClick={() => openQuickView(p)} className="shrink-0">
-                    <Img name={p.image} alt={p.name} sizes="80px" className="h-24 w-20 rounded-xl object-cover" />
+                    <Img name={p.image} alt={p.name} sizes="80px" className="h-24 w-20 object-cover" />
                   </button>
                   <div className="flex min-w-0 flex-1 flex-col gap-1">
-                    <p className="font-display text-lg font-semibold leading-tight text-midnight">{p.name}</p>
-                    <p className="text-sm font-semibold tabular-nums text-plum">{inr(p.price)}</p>
+                    <p className="font-display text-lg leading-tight text-midnight">{p.name}</p>
+                    <p className="text-sm font-semibold tabular-nums text-midnight">{inr(p.price)}</p>
                     <div className="mt-auto flex items-center justify-between">
-                      <div className="flex items-center rounded-full border border-midnight/15 bg-white">
+                      <div className="flex items-center border border-midnight/20 bg-white">
                         <button type="button" onClick={() => setQty(p.id, qty - 1)} aria-label={`Decrease ${p.name}`} className="grid h-8 w-8 place-items-center"><Minus className="h-3.5 w-3.5" /></button>
                         <span className="w-6 text-center text-sm font-semibold tabular-nums">{qty}</span>
                         <button type="button" onClick={() => setQty(p.id, qty + 1)} aria-label={`Increase ${p.name}`} className="grid h-8 w-8 place-items-center"><Plus className="h-3.5 w-3.5" /></button>
@@ -276,7 +275,7 @@ export function BagDrawer() {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-col gap-3 border-t border-midnight/10 bg-white/70 p-5">
+            <div className="flex flex-col gap-3 border-t border-midnight/10 bg-ivory-paper p-5">
               <div className="flex items-baseline justify-between">
                 <span className="text-sm text-midnight/70">Estimated total</span>
                 <span className="text-xl font-bold tabular-nums text-midnight">{inr(total)}</span>
@@ -285,7 +284,7 @@ export function BagDrawer() {
                 href={waLink(message)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-gold flex items-center justify-center gap-2 rounded-full py-3.5 text-sm font-bold uppercase tracking-wider"
+                className="btn btn-gold w-full"
               >
                 <WhatsAppIcon className="h-4 w-4" /> Send enquiry on WhatsApp
               </a>
@@ -299,15 +298,15 @@ export function BagDrawer() {
         <ul className="flex-1 divide-y divide-midnight/10 overflow-y-auto px-5">
           {saved.map((p) => (
             <li key={p.id} className="flex gap-4 py-4">
-              <Img name={p.image} alt={p.name} sizes="80px" className="h-24 w-20 shrink-0 rounded-xl object-cover" />
+              <Img name={p.image} alt={p.name} sizes="80px" className="h-24 w-20 shrink-0 object-cover" />
               <div className="flex min-w-0 flex-1 flex-col gap-1">
-                <p className="font-display text-lg font-semibold leading-tight text-midnight">{p.name}</p>
-                <p className="text-sm font-semibold tabular-nums text-plum">{inr(p.price)}</p>
+                <p className="font-display text-lg leading-tight text-midnight">{p.name}</p>
+                <p className="text-sm font-semibold tabular-nums text-midnight">{inr(p.price)}</p>
                 <div className="mt-auto flex gap-2">
-                  <button type="button" onClick={() => addToCart(p)} className="rounded-full bg-midnight px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-gold-light">
+                  <button type="button" onClick={() => addToCart(p)} className="bg-midnight px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-gold-light">
                     Add to bag
                   </button>
-                  <button type="button" onClick={() => toggleWishlist(p)} className="rounded-full border border-midnight/15 px-3 py-1.5 text-xs font-semibold text-midnight/70">
+                  <button type="button" onClick={() => toggleWishlist(p)} className="border border-midnight/20 px-3 py-2 text-xs font-semibold text-midnight/70">
                     Remove
                   </button>
                 </div>
@@ -326,9 +325,9 @@ function EmptyState({ title, text, onBrowse }: { title: string; text: string; on
       <span className="grid h-16 w-16 place-items-center rounded-full border border-gold/50 text-bronze">
         <ShoppingBag className="h-7 w-7" />
       </span>
-      <p className="font-display text-2xl font-semibold text-midnight">{title}</p>
+      <p className="font-display text-2xl text-midnight">{title}</p>
       <p className="max-w-xs text-sm text-midnight/60">{text}</p>
-      <button type="button" onClick={onBrowse} className="mt-2 rounded-full bg-midnight px-6 py-2.5 text-sm font-semibold text-gold-light">
+      <button type="button" onClick={onBrowse} className="btn btn-ink mt-2">
         Continue browsing
       </button>
     </div>
@@ -346,7 +345,7 @@ export function Toasts() {
             initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8 }}
-            className="max-w-md rounded-full border border-gold/40 bg-midnight/95 px-5 py-3 text-center text-sm text-white shadow-card backdrop-blur"
+            className="max-w-md border border-gold/40 bg-midnight px-5 py-3 text-center text-sm text-white shadow-card"
           >
             {t.text}
           </motion.div>

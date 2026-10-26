@@ -28,30 +28,26 @@ export function Testimonials() {
   }
 
   return (
-    <section id="testimonials" className="relative scroll-mt-28 overflow-hidden bg-ivory py-20 md:py-28">
-      <div className="relative mx-auto max-w-[1320px] px-[max(16px,env(safe-area-inset-left,0px))] md:px-6">
-        <SectionHeading eyebrow="Kind words" title="Loved by Our Customers" tone="light">
-          <p className="rounded-full border border-bronze/30 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-bronze">
-            Placeholder reviews · for layout only
-          </p>
-        </SectionHeading>
+    <section id="testimonials" className="relative scroll-mt-28 overflow-hidden bg-[radial-gradient(ellipse_80%_90%_at_50%_0%,#167580_0%,#0E5E66_38%,#08363C_100%)] py-20 md:py-28">
+      <div className="shell relative">
+        <SectionHeading title="Loved by our customers" subtitle="Placeholder reviews for layout only. Real, consented customer feedback goes here before launch." />
 
-        <ul ref={track} className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+        <ul ref={track} className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
           {testimonials.map((t) => (
             <li key={t.name} className="w-[88%] shrink-0 snap-start sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]">
-              <figure className="relative flex h-full flex-col gap-5 rounded-[28px] border border-midnight/10 bg-white p-7 shadow-[0_30px_60px_-40px_rgba(90,37,78,.5)] sm:p-8">
-                <span aria-hidden="true" className="absolute right-6 top-2 font-display text-[7rem] leading-none text-gold/25">
-                  ”
-                </span>
-                <Stars value={t.rating} />
-                <blockquote className="relative flex-1 font-display text-[1.35rem] leading-snug text-midnight">“{t.text}”</blockquote>
-                <figcaption className="flex items-center gap-3 border-t border-midnight/10 pt-5">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-plum to-midnight font-display text-lg font-semibold text-gold-light ring-2 ring-gold/50 ring-offset-2">
+              <figure className="flex h-full flex-col gap-6 border border-gold/30 bg-[#072e33]/40 p-7 sm:p-9">
+                <div className="flex items-center justify-between gap-3">
+                  <Stars value={t.rating} />
+                  <span className="border border-gold/30 px-2 py-0.5 label text-gold-pale/80">Sample review</span>
+                </div>
+                <blockquote className="flex-1 font-display text-xl italic leading-snug text-white/90">“{t.text}”</blockquote>
+                <figcaption className="flex items-center gap-3 border-t border-white/10 pt-5">
+                  <span className="grid h-11 w-11 place-items-center rounded-full border border-gold/50 font-display text-lg text-gold-light">
                     {t.name.split(' ').pop()}
                   </span>
                   <span>
-                    <span className="block text-sm font-bold text-midnight">{t.name}</span>
-                    <span className="block text-xs text-midnight/55">{t.place} · sample review</span>
+                    <span className="block text-sm font-semibold text-white">{t.name}</span>
+                    <span className="block text-xs text-white/60">{t.place}</span>
                   </span>
                 </figcaption>
               </figure>
@@ -59,8 +55,8 @@ export function Testimonials() {
           ))}
         </ul>
 
-        <div className="mt-6 flex items-center justify-center gap-4">
-          <button type="button" onClick={() => goto(active - 1)} aria-label="Previous review" className="grid h-11 w-11 place-items-center rounded-full border border-midnight/15 text-midnight transition hover:border-plum hover:bg-plum hover:text-white">
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <button type="button" onClick={() => goto(active - 1)} aria-label="Previous review" className="grid h-11 w-11 place-items-center rounded-full border border-white/25 text-white transition hover:border-gold hover:text-gold">
             <ChevronLeft className="h-5 w-5" />
           </button>
           <div className="flex gap-2">
@@ -71,11 +67,11 @@ export function Testimonials() {
                 onClick={() => goto(i)}
                 aria-label={`Go to review ${i + 1}`}
                 aria-current={i === active}
-                className={`h-2 rounded-full transition-all duration-300 ${i === active ? 'w-8 bg-plum' : 'w-2 bg-midnight/20'}`}
+                className={`h-[3px] transition-all duration-300 ${i === active ? 'w-10 bg-gold' : 'w-5 bg-white/25 hover:bg-white/50'}`}
               />
             ))}
           </div>
-          <button type="button" onClick={() => goto(active + 1)} aria-label="Next review" className="grid h-11 w-11 place-items-center rounded-full border border-midnight/15 text-midnight transition hover:border-plum hover:bg-plum hover:text-white">
+          <button type="button" onClick={() => goto(active + 1)} aria-label="Next review" className="grid h-11 w-11 place-items-center rounded-full border border-white/25 text-white transition hover:border-gold hover:text-gold">
             <ChevronRight className="h-5 w-5" />
           </button>
         </div>

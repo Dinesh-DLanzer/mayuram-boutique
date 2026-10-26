@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Search, X } from 'lucide-react'
+import { ArrowRight, Search, X } from 'lucide-react'
 import { useId, useMemo, useRef, useState } from 'react'
 import { inr } from '../config/site'
 import { categories } from '../data/content'
@@ -114,7 +114,7 @@ export function SearchBox({ autoFocus = false, onDone }: { autoFocus?: boolean; 
           }}
           onFocus={() => setOpen(true)}
           onKeyDown={onKey}
-          className="h-12 w-full rounded-full border border-gold/30 bg-white/[0.06] pl-11 pr-10 text-[0.92rem] text-white placeholder:text-white/45 outline-none backdrop-blur transition focus:border-gold/80 focus:bg-white/[0.09] focus:shadow-[0_0_0_4px_rgba(219,160,28,.15)]"
+          className="h-12 w-full border-b border-gold/40 bg-transparent pl-11 pr-10 text-base text-white placeholder:text-white/50 outline-none transition focus:border-gold"
         />
         {q && (
           <button
@@ -140,11 +140,11 @@ export function SearchBox({ autoFocus = false, onDone }: { autoFocus?: boolean; 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.18 }}
-            className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 overflow-hidden rounded-2xl border border-gold/25 bg-midnight-800 p-2 shadow-card"
+            className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 overflow-hidden border border-gold/25 bg-midnight-800 p-2 shadow-card"
           >
             {!q.trim() ? (
               <div className="p-3">
-                <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gold/80">Popular searches</p>
+                <p className="mb-3 label text-gold/80">Popular searches</p>
                 <div className="flex flex-wrap gap-2">
                   {popular.map((p) => (
                     <button
@@ -154,7 +154,7 @@ export function SearchBox({ autoFocus = false, onDone }: { autoFocus?: boolean; 
                         setQ(p)
                         inputRef.current?.focus()
                       }}
-                      className="rounded-full border border-white/15 px-3 py-1.5 text-sm text-white/80 transition hover:border-gold hover:text-gold"
+                      className="border border-white/15 px-3 py-1.5 text-sm text-white/80 transition hover:border-gold hover:text-gold-light"
                     >
                       {p}
                     </button>
@@ -178,13 +178,13 @@ export function SearchBox({ autoFocus = false, onDone }: { autoFocus?: boolean; 
                       tabIndex={-1}
                       onMouseEnter={() => setActive(i)}
                       onClick={() => choose(s)}
-                      className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left transition ${
+                      className={`flex w-full items-center gap-3 px-3 py-2 text-left transition ${
                         i === active ? 'bg-gold/15' : 'hover:bg-white/5'
                       }`}
                     >
                       {s.kind === 'product' ? (
                         <>
-                          <Img name={s.product.image} alt="" sizes="44px" className="h-11 w-11 shrink-0 rounded-lg object-cover" />
+                          <Img name={s.product.image} alt="" sizes="44px" className="h-11 w-11 shrink-0 object-cover" />
                           <span className="min-w-0 flex-1">
                             <span className="block truncate text-sm text-white">{s.product.name}</span>
                             <span className="text-xs text-gold">{inr(s.product.price)}</span>
@@ -193,7 +193,7 @@ export function SearchBox({ autoFocus = false, onDone }: { autoFocus?: boolean; 
                         </>
                       ) : (
                         <>
-                          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-gold/30 text-gold">
+                          <span className="grid h-11 w-11 shrink-0 place-items-center border border-gold/30 text-gold">
                             <Search className="h-4 w-4" />
                           </span>
                           <span className="flex-1 text-sm text-white">{s.label}</span>
@@ -208,9 +208,9 @@ export function SearchBox({ autoFocus = false, onDone }: { autoFocus?: boolean; 
                     type="button"
                     tabIndex={-1}
                     onClick={() => submit(q)}
-                    className="mt-1 w-full rounded-xl px-3 py-2.5 text-left text-sm text-gold hover:bg-white/5"
+                    className="mt-1 w-full px-3 py-2.5 text-left text-sm text-gold-light hover:bg-white/5"
                   >
-                    See all results for “{q}” →
+                    See all results for “{q}” <ArrowRight className="inline h-3.5 w-3.5" />
                   </button>
                 </li>
               </ul>

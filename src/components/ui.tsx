@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import type { CSSProperties, ReactNode, SVGProps } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { useId, useLayoutEffect, useRef, useState, type ReactNode, type SVGProps } from 'react'
 import { img, srcSet } from '../config/site'
 
 export function Img({
@@ -30,57 +30,76 @@ export function Img({
   )
 }
 
-/** Gold scroll-work divider, after the ornaments on the boutique's poster. */
-export function Ornament({ className = '' }: { className?: string }) {
+const silk = [0.22, 1, 0.36, 1] as const
+
+/** A gold running stitch that sews itself in, left to right, when it scrolls into view. */
+export function StitchLine({ className = '', tone = 'gold', delay = 0 }: { className?: string; tone?: 'gold' | 'bronze'; delay?: number }) {
   return (
-    <svg viewBox="0 0 220 18" className={className} aria-hidden="true" fill="none">
-      <path d="M0 9h78M142 9h78" stroke="currentColor" strokeWidth="1" />
-      <path
-        d="M80 9c6-6 12-6 16 0-4 6-10 6-16 0Zm60 0c-6-6-12-6-16 0 4 6 10 6 16 0Z"
-        stroke="currentColor"
-        strokeWidth="1.1"
-      />
-      <path d="M110 1.5 116 9l-6 7.5L104 9z" fill="currentColor" />
-      <circle cx="98" cy="9" r="1.6" fill="currentColor" />
-      <circle cx="122" cy="9" r="1.6" fill="currentColor" />
-    </svg>
+    <motion.svg
+      aria-hidden="true"
+      className={`block h-[2px] overflow-visible ${tone === 'gold' ? 'text-gold' : 'text-bronze'} ${className}`}
+      initial={{ clipPath: 'inset(0 100% 0 0)' }}
+      whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
+      viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+      transition={{ duration: 1.2, delay, ease: silk }}
+    >
+      <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor" strokeWidth="1.5" strokeDasharray="7 5" strokeLinecap="round" />
+    </motion.svg>
   )
 }
 
-/** Stylised peacock-feather eye used as a quiet background motif. */
-export function Feather({ className = '', style }: { className?: string; style?: CSSProperties }) {
+/** Dashed arch outline that is stitched from bottom-left, over the top, down the right. `drawKey` re-stitches it. */
+export function ArchStitch({ drawKey, className = '' }: { drawKey?: string | number; className?: string }) {
+  const ref = useRef<SVGSVGElement>(null)
+  const [size, setSize] = useState({ w: 0, h: 0 })
+  const id = useId().replace(/:/g, '')
+  const reduce = useReducedMotion()
+
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const ro = new ResizeObserver(([e]) => setSize({ w: e.contentRect.width, h: e.contentRect.height }))
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  const { w, h } = size
+  const p = 1
+  // same proportions as .arch-top: horizontal radius 50%, vertical radius 40%
+  const rx = w / 2 - p
+  const ry = h * 0.4 - p
+  const d = w ? `M${p} ${h - p}V${ry + p}A${rx} ${ry} 0 0 1 ${w - p} ${ry + p}V${h - p}` : ''
+
   return (
-    <svg viewBox="0 0 120 260" className={className} style={style} aria-hidden="true">
-      <path d="M60 255C58 180 57 120 60 30" stroke="#DBA01C" strokeWidth="1.4" fill="none" opacity=".8" />
-      {Array.from({ length: 22 }).map((_, i) => {
-        const y = 60 + i * 8.5
-        const w = 46 - Math.abs(i - 6) * 1.6
-        return (
-          <g key={i} opacity={0.55 - i * 0.018}>
-            <path d={`M60 ${y}c-${w * 0.5} -6 -${w} -2 -${w} 6`} stroke="#2a8a6a" strokeWidth=".8" fill="none" />
-            <path d={`M60 ${y}c${w * 0.5} -6 ${w} -2 ${w} 6`} stroke="#2a8a6a" strokeWidth=".8" fill="none" />
-          </g>
-        )
-      })}
-      <ellipse cx="60" cy="62" rx="30" ry="40" fill="#1d6b4f" opacity=".55" />
-      <ellipse cx="60" cy="64" rx="22" ry="30" fill="#DBA01C" opacity=".75" />
-      <ellipse cx="60" cy="66" rx="15" ry="21" fill="#0e7088" />
-      <ellipse cx="60" cy="69" rx="9" ry="13" fill="#0b2a5a" />
-      <ellipse cx="57" cy="64" rx="3" ry="4" fill="#5fd0d8" opacity=".6" />
+    <svg ref={ref} aria-hidden="true" className={`pointer-events-none overflow-visible ${className}`} width="100%" height="100%" fill="none">
+      {d && (
+        <>
+          <mask id={id} maskUnits="userSpaceOnUse">
+            <motion.path
+              key={drawKey}
+              d={d}
+              stroke="#fff"
+              strokeWidth="8"
+              initial={{ pathLength: reduce ? 1 : 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2.4, ease: [0.65, 0, 0.35, 1] }}
+            />
+          </mask>
+          <path d={d} mask={`url(#${id})`} stroke="currentColor" strokeWidth="1.5" strokeDasharray="8 6" strokeLinecap="round" />
+        </>
+      )}
     </svg>
   )
 }
 
 export function SectionHeading({
-  eyebrow,
   title,
   subtitle,
   tone = 'dark',
   align = 'center',
   children,
 }: {
-  eyebrow?: string
-  title: string
+  title: ReactNode
   subtitle?: string
   tone?: 'dark' | 'light'
   align?: 'center' | 'left'
@@ -88,22 +107,17 @@ export function SectionHeading({
 }) {
   const light = tone === 'light'
   return (
-    <div className={`flex flex-col gap-3 ${align === 'center' ? 'items-center text-center' : 'items-start text-left'}`}>
-      {eyebrow && (
-        <p className={`text-[0.72rem] font-semibold uppercase tracking-[0.28em] ${light ? 'text-bronze' : 'text-gold'}`}>
-          {eyebrow}
-        </p>
-      )}
+    <div className={`flex flex-col gap-4 ${align === 'center' ? 'items-center text-center' : 'items-start text-left'}`}>
       <h2
-        className={`text-balance font-display text-[clamp(2rem,4.2vw,3.4rem)] font-semibold leading-[1.05] ${
+        className={`max-w-[18ch] font-display text-[clamp(2.1rem,4.4vw,3.6rem)] font-normal leading-[1.04] ${
           light ? 'text-midnight' : 'text-white'
         }`}
       >
         {title}
       </h2>
-      <Ornament className={`h-3.5 w-44 ${light ? 'text-bronze' : 'text-gold'}`} />
+      <StitchLine className="w-24" tone={light ? 'bronze' : 'gold'} />
       {subtitle && (
-        <p className={`max-w-xl text-pretty text-base leading-relaxed ${light ? 'text-midnight/70' : 'text-white/70'}`}>
+        <p className={`max-w-xl text-pretty text-[1.02rem] leading-relaxed ${light ? 'text-midnight/70' : 'text-white/70'}`}>
           {subtitle}
         </p>
       )}
@@ -129,7 +143,7 @@ export function Reveal({
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '0px 0px -60px 0px' }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, delay, ease: silk }}
     >
       {children}
     </motion.div>

@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown, MapPin, Phone, X } from 'lucide-react'
+import { ArrowRight, ChevronDown, MapPin, Phone, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { links, site } from '../config/site'
 import { megaMenus, navItems, type NavItem } from '../data/menus'
 import { useShop } from '../store/shop'
-import { Img, Ornament, WhatsAppIcon } from './ui'
+import { Img, StitchLine, WhatsAppIcon } from './ui'
 
 const logo = `${import.meta.env.BASE_URL}logo.webp`
 
@@ -43,7 +43,7 @@ export function MobileDrawer({
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[60] lg:hidden"
+          className="fixed inset-0 z-[60] xl:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
@@ -64,13 +64,13 @@ export function MobileDrawer({
                 ref={closeRef}
                 type="button"
                 onClick={onClose}
-                className="grid h-11 w-11 place-items-center rounded-full border border-gold/30 text-gold"
+                className="grid h-11 w-11 place-items-center rounded-full border border-gold/30 text-gold-light"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <Ornament className="mx-auto my-2 h-3 w-40 text-gold/70" />
+            <StitchLine className="mx-4 my-2 w-[calc(100%-2rem)] opacity-60" />
             <nav aria-label="Mobile" className="px-4">
               <ul className="divide-y divide-white/[0.07]">
                 {navItems.map((item) => {
@@ -81,7 +81,7 @@ export function MobileDrawer({
                         <button
                           type="button"
                           onClick={() => go(item)}
-                          className="w-full py-4 text-left font-display text-2xl font-semibold text-white"
+                          className="w-full py-4 text-left font-display text-2xl text-white"
                         >
                           {item.label}
                         </button>
@@ -94,7 +94,7 @@ export function MobileDrawer({
                         type="button"
                         aria-expanded={isOpen}
                         onClick={() => setExpanded(isOpen ? null : menu.id)}
-                        className="flex w-full items-center justify-between py-4 text-left font-display text-2xl font-semibold text-white"
+                        className="flex w-full items-center justify-between py-4 text-left font-display text-2xl text-white"
                       >
                         {item.label}
                         <ChevronDown className={`h-5 w-5 text-gold transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -111,14 +111,14 @@ export function MobileDrawer({
                             <div className="flex flex-col gap-5 pb-5">
                               {menu.columns.map((c) => (
                                 <div key={c.title}>
-                                  <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gold">{c.title}</p>
+                                  <p className="mb-2 label text-gold">{c.title}</p>
                                   <div className="flex flex-wrap gap-2">
                                     {c.links.map((l) => (
                                       <button
                                         key={l.label}
                                         type="button"
                                         onClick={() => go(l)}
-                                        className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] py-1.5 pl-1.5 pr-3.5 text-sm text-white/85 active:border-gold"
+                                        className="flex items-center gap-2 border border-white/15 py-1.5 pl-1.5 pr-3.5 text-sm text-white/85 active:border-gold"
                                       >
                                         {l.thumb ? (
                                           <Img name={l.thumb} alt="" sizes="28px" className="h-7 w-7 rounded-full object-cover" />
@@ -134,13 +134,13 @@ export function MobileDrawer({
                               <button
                                 type="button"
                                 onClick={() => go(menu.banner.action)}
-                                className="relative h-36 overflow-hidden rounded-2xl border border-gold/40 text-left"
+                                className="frame relative h-36 overflow-hidden text-left"
                               >
                                 <Img name={menu.banner.image} alt="" sizes="100vw" className="absolute inset-0 h-full w-full object-cover" />
                                 <span className="absolute inset-0 bg-gradient-to-r from-midnight/95 to-midnight/20" />
                                 <span className="absolute inset-y-0 left-0 flex max-w-[75%] flex-col justify-center gap-1 p-5">
-                                  <span className="font-display text-xl font-semibold uppercase leading-tight text-white">{menu.banner.title}</span>
-                                  <span className="text-xs font-bold uppercase tracking-wider text-gold">{menu.banner.cta} →</span>
+                                  <span className="font-display text-xl leading-tight text-white">{menu.banner.title}</span>
+                                  <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold">{menu.banner.cta} <ArrowRight className="h-3.5 w-3.5" /></span>
                                 </span>
                               </button>
                             </div>
@@ -157,7 +157,7 @@ export function MobileDrawer({
                       onClose()
                       setPanel('wishlist')
                     }}
-                    className="w-full py-4 text-left font-display text-2xl font-semibold text-white"
+                    className="w-full py-4 text-left font-display text-2xl text-white"
                   >
                     Wishlist {wishlist.length > 0 && <span className="text-gold">({wishlist.length})</span>}
                   </button>
@@ -165,10 +165,10 @@ export function MobileDrawer({
               </ul>
             </nav>
             <div className="mt-6 flex flex-col gap-3 px-4">
-              <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-semibold text-midnight">
+              <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-gold">
                 <WhatsAppIcon className="h-5 w-5" /> WhatsApp {site.phones[0].display}
               </a>
-              <a href={links.call} className="flex items-center justify-center gap-2 rounded-full border border-gold/50 py-3.5 font-semibold text-gold">
+              <a href={links.call} className="btn btn-line">
                 <Phone className="h-4 w-4" /> Call {site.phones[0].display}
               </a>
               <p className="mt-2 flex gap-2 text-sm leading-relaxed text-white/60">

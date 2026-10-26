@@ -5,7 +5,7 @@
 export const site = {
   name: 'Mayuram Boutique',
   tamilName: 'மயூரம்',
-  owner: 'S. Swathy',
+  owner: 'Vijayalakshmi',
   tagline: 'Timeless Elegance. Beautifully Yours.',
   services: ['Stitching', 'Aari Work', 'Clothes'],
   phones: [
@@ -26,14 +26,17 @@ export const site = {
   },
 }
 
-const fullAddress =
-  'Mayuram Boutique, No.73, G-5, Ground Floor, Sampoorna Apartment, L.B. Road, Thiruvanmiyur, Chennai 600041, Tamil Nadu, India'
+// Street address only: searching with the name "Mayuram" matches a Google listing at
+// 35/18 3rd E St, Kamaraj Nagar instead of the visiting-card address.
+const mapQuery = 'Sampoorna Apartment, L.B. Road, Thiruvanmiyur, Chennai 600041, Tamil Nadu, India'
 
 export const links = {
   call: `tel:${site.phones[0].tel}`,
   callAlt: `tel:${site.phones[1].tel}`,
   whatsapp: `https://wa.me/${site.whatsappNumber}`,
-  directions: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`,
+  directions: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`,
+  // keyless embed of the same search
+  mapEmbed: `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=17&output=embed`,
 }
 
 export function waLink(message: string) {

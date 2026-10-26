@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/Header.tsx"
+        ],
+        "createdAt": "2026-10-26T17:16:09.567Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); detector reads the JSX without src"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/Categories.tsx"
+        ],
+        "createdAt": "2026-10-26T17:16:34.801Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); detector reads the JSX without src"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/Services.tsx"
+        ],
+        "createdAt": "2026-10-26T17:17:48.095Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); detector reads the JSX without src"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/Story.tsx"
+        ],
+        "createdAt": "2026-10-26T17:18:18.096Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); detector reads the JSX without src"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/Lookbook.tsx"
+        ],
+        "createdAt": "2026-10-26T17:18:51.114Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); detector reads the JSX without src"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/MobileDrawer.tsx"
+        ],
+        "createdAt": "2026-10-26T17:25:01.740Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); runtime check found 0 broken images"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/Overlays.tsx"
+        ],
+        "createdAt": "2026-10-26T17:25:01.764Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); runtime check found 0 broken images"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/SearchBox.tsx"
+        ],
+        "createdAt": "2026-10-26T17:25:01.789Z",
+        "reason": "agent: <Img> component resolves src from its name prop (src/components/ui.tsx); runtime check found 0 broken images"
+      }
+    ]
+  }
+}
